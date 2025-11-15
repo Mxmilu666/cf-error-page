@@ -186,8 +186,9 @@
             啊嘞...可能是配置错误了?
             <span class="error-tag" id="error-code">-</span>
           </div>
-          <div class="desc">
-            可能是由于域的配置、安全设置或源服务器设置问题，Cloudflare 无法完成此请求。麻烦联系站点管理员检查站点的相关配置~
+          <div class="desc" id="error-desc">
+            可能是由于域的配置、安全设置或源服务器设置问题, Cloudflare
+            无法完成此请求。麻烦联系站点管理员检查站点的相关配置~
           </div>
           <div class="error-info">
             <div class="error-info-item">
@@ -199,8 +200,16 @@
               <span class="error-info-value" id="your-ip">-</span>
             </div>
             <div class="error-info-item">
-              <span class="error-info-label">Cloudflare Location:</span>
-              <span class="error-info-value" id="cf-location">-</span>
+              <span class="error-info-label">Requested URL:</span>
+              <span class="error-info-value" id="requested-url">-</span>
+            </div>
+            <div class="error-info-item">
+              <span class="error-info-label">Server ID:</span>
+              <span class="error-info-value" id="server-id">-</span>
+            </div>
+            <div class="error-info-item">
+              <span class="error-info-label">User-Agent:</span>
+              <span class="error-info-value" id="user-agent">-</span>
             </div>
           </div>
           <div class="powered-by">
@@ -216,6 +225,7 @@
     <script>
       // 从 Cloudflare 错误框中提取信息
       // CloudFlare 这个真的写的史一样,还得我自己提取
+
       function extractErrorInfo() {
         const cfErrorBox = document.getElementById("cf-error-details");
         if (!cfErrorBox) return;
@@ -251,11 +261,25 @@
           document.title = errorCode + ": " + errorTitle;
         }
 
-        // 提取 Cloudflare 位置
-        const locationMatch = content.match(/Cloudflare Location:\s*([^<]+)/i);
-        if (locationMatch) {
-          document.getElementById("cf-location").textContent =
-            locationMatch[1].trim();
+        // 提取请求的 URL
+        const urlMatch = content.match(/Requested URL:\s*([^<\n]+)/i);
+        if (urlMatch) {
+          document.getElementById("requested-url").textContent =
+            urlMatch[1].trim();
+        }
+
+        // 提取 Server ID
+        const serverMatch = content.match(/Server ID:\s*([^<\n]+)/i);
+        if (serverMatch) {
+          document.getElementById("server-id").textContent =
+            serverMatch[1].trim();
+        }
+
+        // 提取 User-Agent
+        const userAgentMatch = content.match(/User-Agent:\s*([^<\n]+)/i);
+        if (userAgentMatch) {
+          document.getElementById("user-agent").textContent =
+            userAgentMatch[1].trim();
         }
       }
 
