@@ -91,6 +91,19 @@
         margin-bottom: 30px;
     }
 
+    /* 隐藏 Cloudflare 错误详情中的描述、列表等,仅保留标题 */
+    .cf-error-details p,
+    .cf-error-details ul {
+        display: none !important;
+    }
+
+    .cf-error-details h1 {
+        font-size: inherit;
+        font-weight: inherit;
+        margin: 0;
+        padding: 0;
+    }
+
     @media (max-width: 820px) {
         .illustration {
             display: none;
