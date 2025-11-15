@@ -39,6 +39,13 @@
         background: rgba(0, 0, 0, 0.25);
       }
 
+      @media (max-width: 820px) {
+        .panel {
+          flex: 1;
+          padding: 20px;
+        }
+      }
+
       .card {
         width: 100%;
         max-width: 420px;
@@ -49,6 +56,19 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         border: 1px solid rgba(0, 0, 0, 0.05);
         position: relative;
+      }
+
+      @media (max-width: 820px) {
+        .card {
+          padding: 24px 20px;
+          border-radius: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          padding: 20px 16px;
+        }
       }
 
       /* 霓虹边框效果（轻微） */
@@ -77,6 +97,18 @@
         letter-spacing: -1px;
       }
 
+      @media (max-width: 820px) {
+        .code {
+          font-size: 32px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .code {
+          font-size: 28px;
+        }
+      }
+
       .title {
         font-size: 22px;
         font-weight: 600;
@@ -84,12 +116,26 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 820px) {
+        .title {
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .title {
+          font-size: 18px;
+          gap: 8px;
+        }
       }
 
       .error-tag {
         display: inline-block;
         padding: 4px 12px;
-        background: linear-gradient(135deg, #ff7eb7 0%, #6aa8ff 100%);
+        background: #ff7eb7;
         color: white;
         font-size: 13px;
         font-weight: 700;
@@ -102,6 +148,12 @@
         font-size: 15px;
         opacity: 0.8;
         margin-bottom: 15px;
+      }
+
+      @media (max-width: 480px) {
+        .desc {
+          font-size: 14px;
+        }
       }
 
       .cf-error-details h1 {
@@ -123,12 +175,25 @@
       .error-info-item {
         display: flex;
         margin-bottom: 8px;
+        flex-wrap: wrap;
       }
 
       .error-info-label {
         font-weight: 600;
         min-width: 150px;
         flex-shrink: 0;
+      }
+
+      @media (max-width: 480px) {
+        .error-info-item {
+          flex-direction: column;
+          margin-bottom: 12px;
+        }
+
+        .error-info-label {
+          min-width: auto;
+          margin-bottom: 4px;
+        }
       }
 
       .error-info-value {
@@ -160,10 +225,6 @@
       @media (max-width: 820px) {
         .illustration {
           display: none;
-        }
-        body {
-          justify-content: center;
-          overflow: auto;
         }
       }
     </style>
