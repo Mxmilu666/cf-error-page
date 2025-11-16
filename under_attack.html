@@ -272,48 +272,7 @@
   </head>
 
   <body>
-    <div id="cf-error-details">
-      <div class="main-wrapper" role="main">
-        <div class="main-content">
-          <h1><img src="/favicon.ico" />example.com</h1>
-          <h2 id="challenge-running">
-            Checking if the site connection is secure
-          </h2>
-          <div id="challenge-stage">
-            <div id="turnstile-wrapper"></div>
-          </div>
-          <div id="challenge-body-text">
-            example.com needs to review the security of your connection before
-            proceeding.
-          </div>
-          <div class="footer">
-            <div class="footer-inner">
-              <div>
-                <div class="ray-id">Ray ID: <code>000000000000000</code></div>
-              </div>
-              <div id="footer-text">
-                Performance &amp;security by
-                <a
-                  rel="noopener noreferrer"
-                  href="https://www.cloudflare.com?utm_source=challenge&utm_campaign=p"
-                  target="_blank"
-                  >Cloudflare</a
-                >
-              </div>
-            </div>
-          </div>
-          <noscript>
-            <div id="challenge-error-title">
-              <div class="h2">
-                <span id="challenge-error-text"
-                  >Enable JavaScript and cookies to continue</span
-                >
-              </div>
-            </div>
-          </noscript>
-        </div>
-      </div>
-    </div>
+    <div id="cf-error-details">::CAPTCHA_BOX::</div>
 
     <div class="container">
       <div class="illustration"></div>
@@ -339,7 +298,7 @@
             嗯...正在验证您的浏览器是否安全呢~ 这只需要几秒钟的说...
           </div>
 
-          <div id="captcha-container" style="margin-bottom: 15px;"></div>
+          <div id="captcha-container" style="margin-bottom: 15px"></div>
 
           <div class="info-box">
             <strong>这是什么？</strong><br />
@@ -371,17 +330,21 @@
     <script>
       // 将Cloudflare的验证框移到自定义卡片中
       function moveChallengeToCaptchaContainer() {
-        const turnstileWrapper = document.querySelector('#turnstile-wrapper');
-        const captchaContainer = document.querySelector('#captcha-container');
-        
-        if (turnstileWrapper && captchaContainer && turnstileWrapper.parentElement !== captchaContainer) {
+        const turnstileWrapper = document.querySelector("#turnstile-wrapper");
+        const captchaContainer = document.querySelector("#captcha-container");
+
+        if (
+          turnstileWrapper &&
+          captchaContainer &&
+          turnstileWrapper.parentElement !== captchaContainer
+        ) {
           captchaContainer.appendChild(turnstileWrapper);
         }
       }
 
       // 立即执行一次
       moveChallengeToCaptchaContainer();
-      
+
       // 延迟0.5秒再执行一次
       setTimeout(moveChallengeToCaptchaContainer, 500);
     </script>
