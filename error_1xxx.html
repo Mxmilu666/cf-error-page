@@ -318,7 +318,7 @@
         }
 
         // 提取 IP 地址
-        const ipMatch = content.match(/Your IP address:\s*([\d\.]+)/i);
+        const ipMatch = content.match(/Your IP address:\s*([a-f0-9\.:]+)/i);
         if (ipMatch) {
           document.getElementById("your-ip").textContent = ipMatch[1];
         }
